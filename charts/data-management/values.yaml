@@ -1,0 +1,10 @@
+replicaCount: 2
+image:
+  repository: myregistry/data-management
+  tag: latest
+service:
+  port: 8080
+database:
+  host: db.kandinsky.local
+  port: 5432
+  user: etl_user

@@ -1,0 +1,14 @@
+name: Data Management CI
+on:
+  push:
+    paths:
+      - 'charts/data-management/**'
+      - 'src/**'
+jobs:
+  lint-helm:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: helm/kind-action@v1
+      - name: Lint Chart
+        run: helm lint charts/data-management

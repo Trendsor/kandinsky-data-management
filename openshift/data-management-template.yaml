@@ -1,0 +1,22 @@
+apiVersion: template.openshift.io/v1
+kind: Template
+metadata:
+  name: data-management-template
+objects:
+  - apiVersion: v1
+    kind: DeploymentConfig
+    metadata:
+      name: data-management
+    spec:
+      replicas: 2
+      template:
+        spec:
+          containers:
+            - name: data-management
+              image: ${IMAGE_REGISTRY}/data-management:latest
+              ports:
+                - containerPort: 8080
+parameters:
+  - name: IMAGE_REGISTRY
+    description: Docker registry for the image
+    required: true
